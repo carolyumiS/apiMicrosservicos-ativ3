@@ -1,0 +1,32 @@
+1. Qual a principal diferença entre REST e SOAP?
+
+A principal diferença está na abordagem de cada tecnologia. REST é um estilo arquitetural mais flexível que utiliza os princípios da web, trabalhando com protocolo HTTP de forma simples e usando formatos leves como JSON. Ele é stateless, ou seja, não mantém estado entre requisições, e organiza os dados em recursos acessíveis por URLs específicas. Já o SOAP é um protocolo mais rígido e formal que utiliza XML estruturado para todas as comunicações, pode manter estado entre requisições e funciona sobre diferentes protocolos como HTTP, SMTP ou TCP. Enquanto o REST se assemelha a uma conversa informal e direta, o SOAP atua como um contrato formal com regras bem definidas.
+
+2.Em quais cenários SOAP ainda é utilizado?
+
+O SOAP continua sendo amplamente utilizado em sistemas onde a segurança e a confiabilidade são críticas. Nos setores bancário e financeiro, a robustez do SOAP em termos de segurança o torna a escolha preferida para transações sensíveis. Em integrações corporativas com sistemas legados, muitos desses sistemas já foram construídos usando SOAP e sua migração seria complexa e custosa. Aplicações que exigem transações ACID completas, como sistemas de reservas e processamento de ordens, também se beneficiam das capacidades do SOAP. Além disso, serviços governamentais e sistemas de saúde, como os que utilizam o padrão HL7 para troca de informações médicas, frequentemente adotam SOAP devido aos seus padrões de segurança bem estabelecidos.
+
+3. Quais são as vantagens e desvantagens de usar REST ao invés de SOAP?
+
+O REST oferece vantagens significativas em termos de performance, pois o JSON é um formato mais leve que o XML utilizado pelo SOAP. Sua simplicidade torna mais fácil a implementação e compreensão, acelerando o desenvolvimento. A flexibilidade do REST permite trabalhar com diferentes formatos de dados, enquanto o SOAP se restringe ao XML. A arquitetura stateless do REST facilita a escalabilidade dos sistemas, e ele aproveita naturalmente os mecanismos de cache do HTTP.
+
+Por outro lado, o REST apresenta algumas desvantagens. A segurança depende totalmente da implementação, exigindo que os desenvolvedores configurem manualmente HTTPS, JWT e outros mecanismos. A falta de padronização rígida pode levar a inconsistências entre diferentes APIs REST. Além disso, o REST não suporta nativamente transações ACID complexas, que são comuns em aplicações empresariais críticas.
+
+4. O que é WS-Security e como ele se compara à segurança em APIs REST?
+
+O WS-Security é um padrão de segurança integrado ao protocolo SOAP que atua no nível da mensagem. Ele fornece criptografia e assinatura digital diretamente no conteúdo das mensagens XML, suportando diversos tipos de tokens de segurança como SAML e X.509. Toda essa segurança vem embutida no protocolo, seguindo padrões bem definidos e rígidos.
+
+Já a segurança em APIs REST é implementada de forma mais modular e flexível. Geralmente utiliza HTTPS para criptografia do transporte, JWT para autenticação, OAuth 2.0 para autorização e API Keys para identificação de clientes. Enquanto o WS-Security se assemelha a um cartório digital com toda a formalidade e segurança que isso implica, a segurança REST funciona mais como um cartão de acesso moderno - prático, flexível, mas dependente de uma boa implementação.
+
+5. Explique o modelo de maturidade de Richardson.
+
+ O modelo de maturidade de Richardson classifica as APIs em quatro níveis evolutivos. No nível mais básico, chamado de "The Swamp of POX", a API usa HTTP apenas como meio de transporte, normalmente com um único endpoint para todas as operações, como era comum nas APIs SOAP. No nível 1, a API começa a organizar os dados em recursos com URLs distintas, mas ainda não utiliza adequadamente os verbos HTTP. O nível 2 representa uma evolução significativa, onde a API passa a usar corretamente os verbos HTTP como GET, POST, PUT e DELETE, com URLs representando recursos e os verbos representando ações. O nível mais avançado, nível 3, incorpora controles de hipermídia através do HATEOAS, onde as respostas da API incluem links para ações relacionadas, permitindo que o cliente descubra dinamicamente as capacidades da API. Nossa API de contatos desenvolvida no exercício se enquadra no nível 2, utilizando adequadamente tanto recursos quanto verbos HTTP.
+
+6. O que é GraphQL? Pesquisa e relacione com os conceitos vistos em aula.
+
+GraphQL é uma linguagem de consulta para APIs desenvolvida pelo Facebook que representa uma evolução em relação ao REST tradicional. Enquanto no REST temos múltiplos endpoints específicos para cada recurso, o GraphQL trabalha com um único endpoint para todas as operações. A grande diferença está na forma de obter dados: no REST o cliente recebe uma estrutura fixa de dados definida pelo servidor, enquanto no GraphQL o cliente especifica exatamente quais campos deseja receber.
+Isso resolve dois problemas comuns do REST: o over-fetching, onde o cliente recebe dados que não vai utilizar, e o under-fetching, onde são necessárias várias requisições para obter todos os dados necessários. No GraphQL, com uma única requisição bem elaborada, o cliente obtém exatamente o que precisa.
+Em relação aos conceitos vistos em aula, tanto REST quanto GraphQL utilizam HTTP como protocolo de transporte e representam alternativas modernas para construção de APIs. O REST se mostra mais adequado para casos de uso simples e APIs públicas, enquanto o GraphQL oferece mais poder e flexibilidade para aplicações complexas, especialmente aquelas com frontends sofisticados que precisam de controle granular sobre os dados recebidos.
+
+
+
